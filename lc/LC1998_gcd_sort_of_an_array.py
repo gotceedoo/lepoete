@@ -1,4 +1,4 @@
-def gcdSort(self, nums):
+def gcdSort(_, nums):
     def find(n):
         if uf[n] != n: uf[n] = find(uf[n])                             # path compression
         return uf[n]
