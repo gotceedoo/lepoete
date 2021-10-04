@@ -10,8 +10,8 @@ def findMedianSortedArrays(_, nums1, nums2):  # solution 1
         else:
             l1 = m1 + 1
 
-    r2 = m - r1
-    A = sorted(nums1[r1 : r1 + 2] + nums2[r2 : r2 + 2])
+    l2 = m - l1 # l1==r1
+    A = sorted(nums1[l1 : l1 + 2] + nums2[l2 : l2 + 2])
     return (A[0] + A[k]) / 2
 
 
@@ -24,6 +24,8 @@ def findMedianSortedArrays(_, nums1, nums2):  # solution 2
             m2 = m - m1 - 1
             return m2 < 0 or m2 < n2 and nums1[m1] > nums2[m2]
     r1 = bisect.bisect(wrap(), False, 0, n1)
+    # l1 = bisect.bisect_left(wrap(), True, 0, n1) # l1==r1
+
 
     r2 = m - r1
     A = sorted(nums1[r1 : r1 + 2] + nums2[r2 : r2 + 2])
