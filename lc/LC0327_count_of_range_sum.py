@@ -10,5 +10,5 @@ def countRangeSum(self, nums, lower, upper):
                 while i < r and A[i] - A[k] <  lower: i += 1 # step forward till sum from kth left to ith right satisfied w/ lower
                 while j < r and A[j] - A[k] <= upper: j += 1 # step forward till sum from kth left to jth right unsatified w/ upper
                 res += j - i                                 # add up count of satisfied sum from kth left to ith till jth right
-            A[l:r] = sorted(A[l:r])                          # builtin timsort, variation of mergesort
+            A[l:r] = sorted(A[l:r])                          # builtin timsort, kinda mergesort
     return res
