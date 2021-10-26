@@ -1,4 +1,4 @@
-def countRangeSum(self, nums, lower, upper):                 # solution 1: builtin mergesort
+def countRangeSum(self, nums, lower, upper):
     res, size = 0, len(nums) + 1
     A = list(itertools.accumulate(nums, initial=0))          # prepare array of prefix sums
     for n in range(math.ceil(math.log(size, 2))):            # iterate to mergesort: O(logN)
