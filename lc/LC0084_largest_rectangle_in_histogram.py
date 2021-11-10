@@ -1,7 +1,7 @@
-def largestRectangleArea(self, heights): # sliding window w/ increasing mono-stack O(N)
+def largestRectangleArea(self, heights): # sliding window w/ mono-stack O(N)
     res = 0
     heights.append(0)                    # end at height 0 to ensure all heights processed later;
-    asc = [-1]                           # stack will hold indices of increasing heights,
+    asc = [-1]                           # stack will hold indices of non-decreasing heights,
                                          # and begins w/ index of last height 0 to ensure itself non-empty,
                                          # thus avoid nullness check later.
 
@@ -14,10 +14,10 @@ def largestRectangleArea(self, heights): # sliding window w/ increasing mono-sta
                                          # we will pop off indices of left heights greater than current right height,
                                          # calculate and maximize rectangle areas accordingly;
 
-            l = heights[asc.pop()]       # l:   current rectangle height popped off, which is decreasing;
+            l = heights[asc.pop()]       # l:   current rectangle height popped off, which is non-increasing;
             i = asc[-1] + 1              # i:   current left of rectangle width, which is decreasing and inclusive;
             res = max(res, l * (j - i))  # res: running local maximum rectangle area,
-                                         #      which is w/ decreasing height but increasing width in current window.
+                                         #      which is w/ non-increasing height but increasing width in current window.
 
         asc.append(j)                    # move next window forward;
                                          # append index of current right height,
